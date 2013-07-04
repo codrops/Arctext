@@ -1,0 +1,87 @@
+.arc-wrapper{
+	position: relative;
+	margin: 0px auto;
+	font-family: 'Montserrat', serif;
+	text-transform: uppercase;
+	width: 500px;
+	height: 360px;
+}
+.arc-wrapper:before{
+	content: '';
+	position: absolute;
+	width: 340px;
+	height: 340px;
+	background: #F5E9BC url(../images/noise.png) repeat top left;
+	border: 10px solid #452716;
+	border-radius: 50%;
+	box-shadow: 0px 0px 9px 4px rgba(0,0,0,0.3);
+	top: 50%;
+	left: 50%;
+	margin: -180px 0 0 -180px;
+}
+.arc-wrapper:after{
+	content: 'A';
+	color: #F5E9BC;
+	line-height: 210px;
+	width: 240px;
+	height: 240px;
+	background: #452716 url(../images/noise.png) repeat top left;
+	border-radius: 50%;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -120px 0 0 -120px;
+	font-family: 'Sail', serif;
+	text-transform: none;
+	font-size: 138px;
+	text-shadow: 0px 0px 1px #F5E9BC;
+	text-indent: -25px;
+}
+.arc-wrapper h3{
+	position: absolute;
+	width: 100%;
+	top: 0;
+	left: 0;
+	font-size: 28px;
+	margin-top: 16px;
+	color: #D26A44;
+	letter-spacing: -4px;
+	text-shadow: 1px 1px 1px #954c04;
+}
+.arc-wrapper h4{
+	position: absolute;
+	z-index: 10;
+	width: 100%;
+	font-size: 39px;
+	bottom: 10px;
+	color: #fff;
+	text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+	font-family: 'Concert One', serif;
+}
+.arc-wrapper h4 span{
+	background: #D26A44;
+	padding: 3px;
+	width: 40px;
+	height: 40px;
+	text-align: center;
+	line-height: 40px;
+	border-radius: 50%;
+	margin: 0 -3px 0px -3px;
+}
+.arc-wrapper h4 span.empty{
+	background: transparent;
+	width: 4px;
+}
+.example h3{
+	font-family: 'Concert One', serif;
+	text-transform: uppercase;
+	text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+	color: #F8ECBF;
+	font-size: 40px;
+}
+#example2{
+	margin-top: 80px;
+}
+#example4{
+	margin-top: 120px;
+}

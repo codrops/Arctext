@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+		<meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+        <title>Arctext.js - Curving text with CSS3 and jQuery</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <meta name="description" content="Arctext.js - Curving text with CSS3 and jQuery" />
+        <meta name="keywords" content="arc, letters, words, rotate, warp, circle, curve, along, path, jquery, css3, transform" />
+        <meta name="author" content="Codrops" />
+        <link rel="shortcut icon" href="../favicon.ico"> 
+        <link rel="stylesheet" type="text/css" href="css/demo.css" />
+        <link rel="stylesheet" type="text/css" href="css/style.css" />
+		<link href='http://fonts.googleapis.com/css?family=Montserrat|Sail|Concert+One' rel='stylesheet' type='text/css' />
+    </head>
+    <body>
+        <div class="container">
+			<!-- Codrops top bar -->
+            <div class="codrops-top">
+                <a href="http://tympanus.net/Tutorials/CSS3SlidingImagePanels/">
+                    <strong>&laquo; Previous Demo: </strong>Sliding Image Panels with CSS3
+                </a>
+                <span class="right">
+                    <a href="http://tympanus.net/codrops/2012/01/24/arctext-js-curving-text-with-css3-and-jquery/">
+                        <strong>Back to the Codrops Article</strong>
+                    </a>
+                </span>
+                <div class="clr"></div>
+            </div><!--/ Codrops top bar -->
+			<header>
+				<h1 id="headline">Arctext.js</h1>
+				<h2>Curving text with CSS3 &amp; jQuery</h2>
+				<p class="codrops-demos">
+					<a href="#sub1">Curve</a>
+					<a href="#sub2">Direction</a>
+					<a href="#sub3">No rotation</a>
+					<a href="#sub4">Set/animate</a>
+				</p>
+			</header>
+			<section class="main">				
+				<div id="arc-wrapper" class="arc-wrapper">
+					<h3>Just &diams; bend &diams; your &diams; text</h3>
+					<h4>ABCDEFG</h4>
+				</div>
+			</section>
+			<section class="sub" id="sub1">
+				<div class="example">
+					<h3 id="example1">I wanna be curved</h3>
+				</div>
+				<div class="code">
+					<h4>Example 1 - Curve</h4>
+					<p>Curved with a radius of 300</p>
+					<code>$example1.arctext({radius: 300})</code>
+				</div>
+				<div class="clr"></div>
+			</section>
+			<section class="sub" id="sub2">
+				<div class="example">
+					<h3 id="example2">I wanna be different</h3>
+				</div>
+				<div class="code">
+					<h4>Example 2 - Direction</h4>
+					<p>Changed direction</p>
+					<code>$example2.arctext({radius: 400, dir: -1})</code>
+				</div>
+				<div class="clr"></div>
+			</section>
+			<section class="sub" id="sub3">
+				<div class="example">
+					<h3 id="example3">I have straight letters</h3>
+				</div>
+				<div class="code">
+					<h4>Example 3 - No rotation</h4>
+					<p>Non-rotated letters</p>
+					<code>$example3.arctext({radius: 500, rotate: false})</code>
+				</div>
+				<div class="clr"></div>
+			</section>
+			<section class="sub" id="sub4">
+				<div class="example">
+					<h3 id="example4">See me change</h3>
+				</div>
+				<div class="code">
+					<h4>Example 4 - Set/animate</h4>
+					<p>Set or animate</p>
+					<code>$example4.arctext({radius: 300})</code>
+					<p class="buttons">
+						<a id="button_set" href="#"><span>Set me</span><span>radius: 140,<br /> dir: -1</span></a>
+						<a id="button_anim1" href="#"><span>Animate me</span><span>radius: 300,<br /> dir: -1,<br /> animation: 300ms ease-out</span></a>
+						<a id="button_anim2" href="#"><span>Animate me</span><span>radius: 200,<br /> dir: 1,<br /> animation: 300ms</span></a>
+						<a id="button_reset" href="#"><span>Reset me</span><span>radius: 300,<br /> dir: 1</span></a>
+					</p>
+				</div>
+				<div class="clr"></div>
+			</section>
+			<div class="clr"></div>
+        </div>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+		<script type="text/javascript" src="js/jquery.arctext.js"></script>
+		<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+		<script type="text/javascript">
+			var $headline = $('#headline').hide();
+		
+			var $word1		= $('#arc-wrapper').find('h3').hide();
+			var $word2		= $('#arc-wrapper').find('h4').hide();
+			
+			var $example1	= $('#example1').hide();
+			var $example2	= $('#example2').hide();
+			var $example3	= $('#example3').hide();
+			var $example4	= $('#example4').hide();
+			
+			google.load('webfont','1');
+			
+			google.setOnLoadCallback(function() {
+				WebFont.load({
+					google		: {
+						families	: ['Montserrat','Concert One']
+					},
+					fontactive	: function(fontFamily, fontDescription) {
+						init();
+					},
+					fontinactive	: function(fontFamily, fontDescription) {
+						init();
+					}
+				});
+			});
+			
+			function init() {
+			
+				$headline.show().arctext({radius: 400});
+					
+				$word1.show().arctext();
+				$word2.show().arctext({radius: 148, dir: -1});
+				
+				$example1.show().arctext({radius: 300});
+				$example2.show().arctext({radius: 400, dir: -1});
+				$example3.show().arctext({radius: 500, rotate: false});
+				$example4.show().arctext({radius: 300});
+				
+				$('#button_set').on('click', function() {
+					$example4.arctext('set', {
+						radius		: 140,
+						dir			: -1
+					});
+					return false;
+				});
+				$('#button_anim1').on('click', function() {
+					$example4.arctext('set', {
+						radius		: 300, 
+						dir			: -1,
+						animation	: {
+							speed	: 300,
+							easing  : 'ease-out'
+						}
+					});
+					return false;
+				});
+				$('#button_anim2').on('click', function() {
+					$example4.arctext('set', {
+						radius		: 200, 
+						dir			: 1, 
+						animation	: {
+							speed	: 300
+						}
+					});
+					return false;
+				});
+				$('#button_reset').on('click', function() {
+					$example4.arctext('set', {
+						radius		: 300, 
+						dir			: 1
+					});
+					return false;
+				});
+			
+			};
+		</script/>
+    </body>
+</html>
