@@ -1,0 +1,11 @@
+{
+  "name": "Arctext",
+  "version": "1.0.0",
+  "description": "Arctext.js is a jQuery plugin that calculates the right rotation of each letter and distributes the letters equally across the imaginary arc of the given radius.",
+  "main": "js/jquery.arctext.js",
+  "repository": "https://github.com/codrops/Arctext",
+  "author": "https://github.com/botelho",
+  "license": "http://tympanus.net/codrops/licensing/",
+  "keywords": ["js", "javascript", "jquery", "arctext", "codrops", "bend", "wrap", "curved", "text", "letter"],
+  "homepage": "https://github.com/codrops/Arctext"
+}
