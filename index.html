@@ -50,7 +50,7 @@
 				<div class="code">
 					<h4>Example 1 - Curve</h4>
 					<p>Curved with a radius of 300</p>
-					<code>$example1.arctext({radius: 300})</code>
+					<code>arctext(example1, { radius: 300 })</code>
 				</div>
 				<div class="clr"></div>
 			</section>
@@ -61,7 +61,7 @@
 				<div class="code">
 					<h4>Example 2 - Direction</h4>
 					<p>Changed direction</p>
-					<code>$example2.arctext({radius: 400, dir: -1})</code>
+					<code>arctext(example2, {radius: 400, dir: -1})</code>
 				</div>
 				<div class="clr"></div>
 			</section>
@@ -72,7 +72,7 @@
 				<div class="code">
 					<h4>Example 3 - No rotation</h4>
 					<p>Non-rotated letters</p>
-					<code>$example3.arctext({radius: 500, rotate: false})</code>
+					<code>arctext(example3, {radius: 500, rotate: false})</code>
 				</div>
 				<div class="clr"></div>
 			</section>
@@ -83,7 +83,7 @@
 				<div class="code">
 					<h4>Example 4 - Set/animate</h4>
 					<p>Set or animate</p>
-					<code>$example4.arctext({radius: 300})</code>
+					<code>arctext(example4, {radius: 300})</code>
 					<p class="buttons">
 						<a id="button_set" href="#"><span>Set me</span><span>radius: 140,<br /> dir: -1</span></a>
 						<a id="button_anim1" href="#"><span>Animate me</span><span>radius: 300,<br /> dir: -1,<br /> animation: 300ms ease-out</span></a>
@@ -95,85 +95,71 @@
 			</section>
 			<div class="clr"></div>
         </div>
-		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-		<script type="text/javascript" src="js/jquery.arctext.js"></script>
+		<script type="text/javascript" src="js/Arctext.js"></script>
 		<script type="text/javascript" src="http://www.google.com/jsapi"></script>
 		<script type="text/javascript">
-			var $headline = $('#headline').hide();
-		
-			var $word1		= $('#arc-wrapper').find('h3').hide();
-			var $word2		= $('#arc-wrapper').find('h4').hide();
-			
-			var $example1	= $('#example1').hide();
-			var $example2	= $('#example2').hide();
-			var $example3	= $('#example3').hide();
-			var $example4	= $('#example4').hide();
-			
-			google.load('webfont','1');
-			
-			google.setOnLoadCallback(function() {
-				WebFont.load({
-					google		: {
-						families	: ['Montserrat','Concert One']
-					},
-					fontactive	: function(fontFamily, fontDescription) {
-						init();
-					},
-					fontinactive	: function(fontFamily, fontDescription) {
-						init();
-					}
-				});
-			});
-			
+			var headline = document.getElementById('headline');
+			var word1 = document.querySelector('#arc-wrapper h3');
+			var word2 = document.querySelector('#arc-wrapper h4');
+			var example1 = document.getElementById('example1');
+			var example2 = document.getElementById('example2');
+			var example3 = document.getElementById('example3');
+			var example4 = document.getElementById('example4');
+
 			function init() {
-			
-				$headline.show().arctext({radius: 400});
-					
-				$word1.show().arctext();
-				$word2.show().arctext({radius: 148, dir: -1});
-				
-				$example1.show().arctext({radius: 300});
-				$example2.show().arctext({radius: 400, dir: -1});
-				$example3.show().arctext({radius: 500, rotate: false});
-				$example4.show().arctext({radius: 300});
-				
-				$('#button_set').on('click', function() {
-					$example4.arctext('set', {
-						radius		: 140,
-						dir			: -1
-					});
-					return false;
-				});
-				$('#button_anim1').on('click', function() {
-					$example4.arctext('set', {
-						radius		: 300, 
-						dir			: -1,
-						animation	: {
-							speed	: 300,
-							easing  : 'ease-out'
-						}
-					});
-					return false;
-				});
-				$('#button_anim2').on('click', function() {
-					$example4.arctext('set', {
-						radius		: 200, 
-						dir			: 1, 
-						animation	: {
-							speed	: 300
-						}
-					});
-					return false;
-				});
-				$('#button_reset').on('click', function() {
-					$example4.arctext('set', {
-						radius		: 300, 
-						dir			: 1
-					});
-					return false;
-				});
-			
-			};
+			  arctext(headline, { radius: 400 });
+
+			  arctext(word1);
+			  arctext(word2, { radius: 148, dir: -1 });
+
+			  arctext(example1, { radius: 300 });
+			  arctext(example2, { radius: 400, dir: -1 });
+			  arctext(example3, { radius: 500, rotate: false });
+			  arctext(example4, { radius: 300 });
+
+			  document.getElementById('button_set').addEventListener('click', function () {
+			    arctext(example4).set({
+			      radius: 140,
+			      dir: -1,
+			    });
+			    return false;
+			  });
+
+			  document.getElementById('button_anim1').addEventListener('click', function () {
+			    arctext(example4).set({
+			      radius: 300,
+			      dir: -1,
+			      animation: {
+			        speed: 300,
+			        easing: 'ease-out',
+			      },
+			    });
+			    return false;
+			  });
+
+			  document.getElementById('button_anim2').addEventListener('click', function () {
+			    arctext(example4).set({
+			      radius: 200,
+			      dir: 1,
+			      animation: {
+			        speed: 300,
+			      },
+			    });
+			    return false;
+			  });
+
+			  document.getElementById('button_reset').addEventListener('click', function () {
+			    arctext(example4).set({
+			      radius: 300,
+			      dir: 1,
+			    });
+			    return false;
+			  });
+			}
+
+
+			init()
+
 		</script/>
     </body>
 </html>
